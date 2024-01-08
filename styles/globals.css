@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply font-CourierPrime;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}

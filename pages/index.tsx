@@ -1,10 +1,11 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Navbar from "@/components/common/Navbar"
+import Home from "../components/Home/index"
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function App() {
   return (
-    <h1>TekPlay Home Page</h1>
+    <div className="bg-tekPlay-primary w-full min-h-screen h-fit">
+      <Navbar />
+      <Home />
+    </div>
   )
 }

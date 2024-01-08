@@ -8,11 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        tekPlay: {
+          primary: "#121212",
+          pink: "#FF00B8",
+          cyan: "#00FFFF",
+          yellow: "#FAFF00",
+          red: "#FF0000",
+          purple: "#AD00FF",
+          orange: "#FFC700",
+        },
       },
+      fontFamily: {
+        CourierPrime: ["Courier Prime", "monospace"],
+      }
     },
   },
   plugins: [],

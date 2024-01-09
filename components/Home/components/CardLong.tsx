@@ -3,10 +3,10 @@ import React from "react";
 
 const CardLong = () => {
   return (
-    <div className="w-[22vw] h-[33vw] relative overflow-clip text-white">
-      <div>
+    <div className="w-full max-w-80 h-full max-h-[32rem] relative text-white hover:scale-105 cursor-pointer duration-300">
+      <div className="w-full h-full">
         <Image
-          className="w-full h-full"
+          className="w-full h-full object-cover"
           src="/assets/placeholder.svg"
           alt={""}
           width={200}

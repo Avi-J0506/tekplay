@@ -15,18 +15,31 @@ const Index = () => {
           height={200}
         />
         <Image
-          className="w-32 hidden lg:block"
+          className="w-32 hidden lg:block mt-20"
           src="/assets/Graphic1.svg"
           alt={""}
           width={200}
           height={200}
         />
       </div>
-      <div className="pt-28 px-5 lg:px-12 relative z-50 flex justify-between">
-        <CardLong />
-        <CardLong />
-        <CardLong />
-        <div className="flex flex-col justify-evenly">
+      <div className="pt-28 px-5 lg:px-12 relative z-50 flex flex-wrap gap-5 p-10">
+        <div className="w-full flex flex-wrap gap-5 justify-start">
+          <div className="hidden lg:block">
+            <CardLong />
+          </div>
+          <div className="hidden lg:block">
+            <CardLong />
+          </div>
+          <div className="hidden lg:block">
+            <CardLong />
+          </div>
+          <div className="hidden lg:block">
+            <CardLong />
+          </div>
+        </div>
+        <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5">
+          <CardShort />
+          <CardShort />
           <CardShort />
           <CardShort />
         </div>

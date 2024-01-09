@@ -1,9 +1,27 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const CardShort = () => {
+  const [color, setColor] = React.useState("");
+  const randomColorPicker = () => {
+    const colors = [
+      "#FAFF00",
+      "#00FFFF",
+      "#FF00B8",
+      "#AD00FF",
+      "#FFC700",
+      "#FF0000",
+    ];
+    const random = Math.floor(Math.random() * colors.length);
+    setColor(colors[random]);
+  };
+
+  useEffect(() => {
+    randomColorPicker();
+  });
+
   return (
-    <div className="w-[24vw] h-[15vw] flex flex-col">
+    <div className="w-full max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300">
       <div className="h-3/4 w-full object-cover">
         <Image
           className="w-full h-full object-cover"
@@ -13,7 +31,10 @@ const CardShort = () => {
           height={200}
         />
       </div>
-      <div className="w-full h-full flex flex-col items-center p-4 bg-tekPlay-yellow">
+      <div
+        className="w-full h-full flex flex-col items-center p-4"
+        style={{ backgroundColor: color }}
+      >
         <div className="w-full flex justify-start">
           <h1 className="font-semibold">Lorem Ipsum</h1>
         </div>

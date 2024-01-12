@@ -7,13 +7,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
+  width: 0px;
 }

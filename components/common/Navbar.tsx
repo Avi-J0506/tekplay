@@ -22,7 +22,7 @@ const Navbar = () => {
           <a href="">Games</a>
         </div>
         <div>
-          <a href="">News</a>
+          <a href="/news">News</a>
         </div>
         <div>
           <a href="">Video</a>

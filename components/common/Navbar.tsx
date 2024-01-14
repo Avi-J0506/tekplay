@@ -33,7 +33,7 @@ const Navbar = () => {
         </div>
         <div>
           <button className="bg-tekPlay-pink px-4 py-2 text-black">
-            Login/SignUp
+            <Link href={'/login'}>Login</Link>
           </button>
         </div>
       </div>
@@ -78,7 +78,9 @@ const Navbar = () => {
             <div className="w-full flex flex-col justify-center items-center gap-[35px] mb-[50px]">
               <div>
                 <button className="bg-tekPlay-pink px-4 py-2 text-black text-xl font-semibold">
-                  Login/SignUp
+                  <Link href={'/login'}>
+                    Login
+                  </Link>
                 </button>
               </div>
               <Image

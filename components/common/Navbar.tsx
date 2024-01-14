@@ -2,12 +2,13 @@ import Image from "next/image";
 import React from "react";
 import MenuIcon from "remixicon-react/MenuLineIcon";
 import CloseIcon from "remixicon-react/CloseLineIcon";
+import Link from "next/link";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <div className="w-full h-20 border-b border-b-white absolute top-0 left-0 z-[99] flex items-center justify-between px-5 lg:px-12 text-white">
+    <div className="bg-tekPlay-primary w-full h-20 border-b border-b-white absolute top-0 left-0 z-[99] flex items-center justify-between px-5 lg:px-12 text-white">
       <div>
         <Image
           className="w-32"
@@ -19,16 +20,16 @@ const Navbar = () => {
       </div>
       <div className="hidden lg:flex items-center gap-10">
         <div>
-          <a href="">Games</a>
+          <Link href="/">Home</Link>
         </div>
         <div>
-          <a href="/news">News</a>
+          <Link href="/news">News</Link>
         </div>
         <div>
-          <a href="">Video</a>
+          <Link href="">Video</Link>
         </div>
         <div>
-          <a href="">Blog</a>
+          <Link href="">Blog</Link>
         </div>
         <div>
           <button className="bg-tekPlay-pink px-4 py-2 text-black">

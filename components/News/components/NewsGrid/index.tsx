@@ -11,7 +11,7 @@ const Index = () => {
           Powering News for Gamers Everywhere!
         </h1>
       </div>
-      <div className="w-full overflow-x-scroll hidden md:flex justify-center gap-5">
+      <div className="w-full overflow-x-auto hidden lg:flex lg:justify-center gap-5 flex-shrink-0">
         {categories.categories.map((category, index) => (
           <Chip key={`chip_${index}`} title={category} />
         ))}

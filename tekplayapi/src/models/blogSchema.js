@@ -9,10 +9,14 @@ const blogSchema = new Schema({
         type:String,
         required:true
     },
-    author:{
+    authorName:{
         type:String,
         required:true,
     },
-})
+    authorID:{
+        type:String,
+        required:true
+    }
+},{timestamps:true})
 
 export default mongoose.model("Blog",blogSchema);

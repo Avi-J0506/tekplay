@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('common'));
 app.use(helmet({
-    crossOriginResourcePolicy:false,
-    crossOriginOpenerPolicy:false,
-    crossOriginEmbedderPolicy:false
+    crossOriginResourcePolicy:"cross-origin",
+    crossOriginOpenerPolicy:"cross-origin",
+    crossOriginEmbedderPolicy:"cross-origin"
 }))
 
 

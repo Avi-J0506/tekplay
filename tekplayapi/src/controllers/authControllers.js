@@ -15,7 +15,7 @@ export const signin = async (req, res) => {
         if(authOK){
             const token = createToken(user._id);
             res.cookie('jwt',token,{httpOnly:true})
-            res.status(201).send(user);
+            res.status(201).send({message:"login ok"});
         }else{
             res.status(400).send("incorrect password")
         }
@@ -36,6 +36,6 @@ export const signup = async (req, res) => {
         res.status(201).send({ message: 'User created successfully' });
     }
     else {
-        res.status(409).send(await User.findOne({ email }));
+        res.status(409).send({message:"User already exists"});
     }
 }

@@ -1,4 +1,4 @@
-import Blog from "../models/blogSchema";
+import Blog from "../models/blogSchema.js";
 
 export async function createNewBlog(req,res){
     const { title, desc , author } = req.body;

@@ -4,7 +4,7 @@ import Blog from "../models/blogSchema.js";
 const pageLength = 12;
 
 
-export default paginatedBlogs = async (req,res)=>{
+export default async function paginatedBlogs (req,res){
     const pageno = parseInt(req.query.page) || 1;
     try{
         const blogs = await Blog.find()

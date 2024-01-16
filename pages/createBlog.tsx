@@ -9,7 +9,7 @@ import nookies from "nookies";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), { ssr: false });
 
-const Index = ({ userToken }) => {
+const Index = ({ userToken }: { userToken: string }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const quillRef = useRef(null);

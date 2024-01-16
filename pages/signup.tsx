@@ -1,11 +1,55 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import server from "@/utils/server/server";
+import toast from "react-hot-toast";
+import nookies, { setCookie } from "nookies";
+import { useRouter } from "next/router";
 
-const signup = () => {
+const SignUp = () => {
+  const [userName, setUserName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [errors, setErrors] = useState<string>("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setErrors("Passwords don't match");
+      return;
+    }
+    setErrors("");
+
+    try {
+      const response = await server.post("/api/auth/signup", {
+        email,
+        password,
+        name: userName,
+      });
+
+      const { jwt } = response.data;
+
+      setCookie(null, "userToken", jwt, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+      toast.success("Account created successfully");
+      router.push("/");
+    } catch (error: any) {
+      if (error?.response?.data?.message) {
+        toast.error(error?.response?.data?.message);
+        return;
+      }
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
-    <div>
-      <section className="bg-gray-50 dark:bg-gray-900">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div className="w-full min-h-screen h-fit dark:bg-gray-900">
+      <section className="bg-gray-50 h-fit dark:bg-gray-900">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
           <a
             href="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
@@ -17,7 +61,24 @@ const signup = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div>
+                  <label
+                    htmlFor="userName"
+                    className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+                  >
+                    Username
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="name@company.com"
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </div>
                 <div>
                   <label
                     htmlFor="email"
@@ -26,11 +87,13 @@ const signup = () => {
                     Your email
                   </label>
                   <input
+                    required
                     type="email"
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div>
@@ -41,11 +104,13 @@ const signup = () => {
                     Password
                   </label>
                   <input
+                    required
                     type="password"
                     name="password"
                     id="password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div>
@@ -56,16 +121,19 @@ const signup = () => {
                     Confirm password
                   </label>
                   <input
-                    type="confirm-password"
+                    required
+                    type="password"
                     name="confirm-password"
                     id="confirm-password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
+                      required
                       id="terms"
                       aria-describedby="terms"
                       type="checkbox"
@@ -87,6 +155,9 @@ const signup = () => {
                     </label>
                   </div>
                 </div>
+                {errors && (
+                  <div className="text-red-500 text-xs mt-1">{errors}</div>
+                )}
                 <button
                   type="submit"
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -96,7 +167,7 @@ const signup = () => {
                 <p className="text-md font-light text-gray-500 dark:text-gray-400">
                   Already have an account?{" "}
                   <Link
-                    href={'/login'}
+                    href={"/login"}
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Login here
@@ -111,4 +182,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default SignUp;

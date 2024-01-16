@@ -3,9 +3,17 @@ import React from "react";
 import MenuIcon from "remixicon-react/MenuLineIcon";
 import CloseIcon from "remixicon-react/CloseLineIcon";
 import Link from "next/link";
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { useRouter } from "next/router";
 
-const Navbar = () => {
+const Navbar = ({ userToken }: { userToken: string }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    destroyCookie(null, 'userToken')
+    router.push('/login')
+  }
 
   return (
     <div className="bg-tekPlay-primary w-full h-20 border-b border-b-white absolute top-0 left-0 z-[99] flex items-center justify-between px-5 lg:px-12 text-white">
@@ -31,10 +39,21 @@ const Navbar = () => {
         <div>
           <Link href="">Blog</Link>
         </div>
+        {userToken && (
+          <div>
+          <Link href="/createBlog">Create Blog</Link>
+        </div>
+        )}
         <div>
-          <button className="bg-tekPlay-pink px-4 py-2 text-black">
-            <Link href={'/login'}>Login</Link>
-          </button>
+          {!userToken ? (
+            <button className="bg-tekPlay-pink px-4 py-2 text-black">
+              <Link href={"/login"}>Login</Link>
+            </button>
+          ) : (
+            <button className="bg-tekPlay-pink px-4 py-2 text-black" onClick={handleLogOut}>
+              <h1>Log Out</h1>
+            </button>
+          )}
         </div>
       </div>
       <div className="flex lg:hidden relative">
@@ -78,9 +97,7 @@ const Navbar = () => {
             <div className="w-full flex flex-col justify-center items-center gap-[35px] mb-[50px]">
               <div>
                 <button className="bg-tekPlay-pink px-4 py-2 text-black text-xl font-semibold">
-                  <Link href={'/login'}>
-                    Login
-                  </Link>
+                  <Link href={"/login"}>Login</Link>
                 </button>
               </div>
               <Image

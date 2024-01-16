@@ -4,10 +4,12 @@ import Navbar from "@/components/common/Navbar";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import toast from "react-hot-toast";
+import { GetServerSidePropsContext } from "next";
+import nookies from "nookies";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), { ssr: false });
 
-const Index = () => {
+const Index = ({ userToken }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const quillRef = useRef(null);
@@ -51,7 +53,7 @@ const Index = () => {
 
   return (
     <div className="bg-tekPlay-primary w-full min-h-screen h-fit flex flex-col pb-20">
-      <Navbar />
+      <Navbar userToken={userToken} />
       <div className="w-full h-full flex flex-col items-center flex-1 mt-20">
         <div className="w-full md:w-3/4 flex justify-between h-20 py-4 p-2 md:p-0 md:py-4">
           <div>
@@ -85,3 +87,23 @@ const Index = () => {
 };
 
 export default Index;
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const cookies = nookies.get(ctx);
+  const userToken = cookies?.userToken;
+
+  if (!userToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      userToken: userToken ? userToken : null,
+    },
+  };
+}

@@ -5,8 +5,8 @@ const env = process.env.ENV || "development";
 const config = {
   development: {
     env,
-    database: 'mongodb://admin:password@localhost:27017/tekplay',
-    PORT: 3000,
+    database: 'mongodb+srv://admin:admin@test.mjgwyq8.mongodb.net/tekplay?retryWrites=true&w=majority',
+    PORT: 3001,
     jwtkey:"hellodarknessmyoldfriend",
   },
   production: {

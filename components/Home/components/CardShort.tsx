@@ -1,7 +1,15 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 
-const CardShort = () => {
+const CardShort = ({
+  title,
+  author,
+  date,
+}: {
+  title: string;
+  author: string;
+  date: string;
+}) => {
   const [color, setColor] = React.useState("");
   const randomColorPicker = () => {
     const colors = [
@@ -36,14 +44,14 @@ const CardShort = () => {
         style={{ backgroundColor: color }}
       >
         <div className="w-full flex justify-start">
-          <h1 className="font-semibold">Lorem Ipsum</h1>
+          <h1 className="font-semibold">{title}</h1>
         </div>
         <div className="w-full flex justify-between text-sm">
           <div>
-            <h1>By John Doe</h1>
+            <h1>By {author}</h1>
           </div>
           <div>
-            <h1>18th May 2023</h1>
+            <h1>{date}</h1>
           </div>
         </div>
       </div>

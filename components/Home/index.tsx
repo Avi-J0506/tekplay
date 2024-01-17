@@ -1,9 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import CardLong from "./components/CardLong";
 import CardShort from "./components/CardShort";
+import parseAndFormatDate from "@/utils/helpers/parseAndFormatDate";
 
-const Index = () => {
+const Index = ({ blogPosts }: { blogPosts: any }) => {
+  const [blogs, setBlogs] = React.useState(blogPosts);
+
+  useEffect(() => {
+    setBlogs(blogPosts);
+  }, [blogPosts]);
+
+  console.log({ blogPosts });
   return (
     <div className="w-full min-h-screen h-fit overflow-clip bg-tekPlay-primary relative">
       <div className="absolute top-10 w-full flex justify-between items-start h-fit overflow-clip z-0">
@@ -38,10 +46,9 @@ const Index = () => {
           </div>
         </div>
         <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5">
-          <CardShort />
-          <CardShort />
-          <CardShort />
-          <CardShort />
+          {blogs.map((blog: any) => (
+            <CardShort key={blog._id} title={blog.title} author={blog.authorName} date={parseAndFormatDate(blog.createdAt)} />
+          ))}
         </div>
       </div>
     </div>

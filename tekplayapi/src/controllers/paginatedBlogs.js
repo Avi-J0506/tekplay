@@ -10,6 +10,7 @@ export default async function paginatedBlogs (req,res){
         const blogs = await Blog.find()
         .skip((pageno-1)*pageLength)
         .limit(pageLength)
+        
         res.status(200).json(blogs)
     }
     catch(err){

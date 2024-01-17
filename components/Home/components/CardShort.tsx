@@ -1,14 +1,17 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
 const CardShort = ({
   title,
   author,
   date,
+  id
 }: {
   title: string;
   author: string;
   date: string;
+  id: string
 }) => {
   const [color, setColor] = React.useState("");
   const randomColorPicker = () => {
@@ -23,13 +26,14 @@ const CardShort = ({
     const random = Math.floor(Math.random() * colors.length);
     setColor(colors[random]);
   };
+  const router = useRouter();
 
   useEffect(() => {
     randomColorPicker();
   });
 
   return (
-    <div className="w-full max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300">
+    <div className="w-full max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300 mb-5" onClick={() => router.push(`/blog/${id}`)}>
       <div className="h-3/4 w-full object-cover">
         <Image
           className="w-full h-full object-cover"

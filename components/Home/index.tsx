@@ -4,14 +4,22 @@ import CardLong from "./components/CardLong";
 import CardShort from "./components/CardShort";
 import parseAndFormatDate from "@/utils/helpers/parseAndFormatDate";
 
-const Index = ({ blogPosts }: { blogPosts: any }) => {
+const Index = ({
+  uniqueRandomBlogs,
+  blogPosts,
+}: {
+  uniqueRandomBlogs: any;
+  blogPosts: any;
+}) => {
   const [blogs, setBlogs] = React.useState(blogPosts);
+  const [uniqueRandomBlogsList, setUniqueRandomBlogsList] =
+    React.useState(uniqueRandomBlogs);
 
   useEffect(() => {
     setBlogs(blogPosts);
-  }, [blogPosts]);
+    setUniqueRandomBlogsList(uniqueRandomBlogs);
+  }, [blogPosts, uniqueRandomBlogs]);
 
-  console.log({ blogPosts });
   return (
     <div className="w-full min-h-screen h-fit overflow-clip bg-tekPlay-primary relative">
       <div className="absolute top-10 w-full flex justify-between items-start h-fit overflow-clip z-0">
@@ -32,22 +40,26 @@ const Index = ({ blogPosts }: { blogPosts: any }) => {
       </div>
       <div className="pt-28 px-5 lg:px-12 relative z-50 flex flex-wrap gap-5 p-10">
         <div className="w-full flex flex-wrap gap-5 justify-start">
-          <div className="hidden lg:block">
-            <CardLong />
-          </div>
-          <div className="hidden lg:block">
-            <CardLong />
-          </div>
-          <div className="hidden lg:block">
-            <CardLong />
-          </div>
-          <div className="hidden lg:block">
-            <CardLong />
-          </div>
+          {uniqueRandomBlogsList.map((blog: any) => (
+            <div key={blog._id} className="hidden lg:block">
+              <CardLong
+                title={blog.title}
+                author={blog.title}
+                desc={blog.desc}
+                id={blog._id}
+              />
+            </div>
+          ))}
         </div>
         <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5">
           {blogs.map((blog: any) => (
-            <CardShort key={blog._id} title={blog.title} author={blog.authorName} date={parseAndFormatDate(blog.createdAt)} />
+            <CardShort
+              key={blog._id}
+              title={blog.title}
+              author={blog.authorName}
+              date={parseAndFormatDate(blog.createdAt)}
+              id={blog._id}
+            />
           ))}
         </div>
       </div>

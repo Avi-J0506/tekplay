@@ -9,3 +9,41 @@
 ::-webkit-scrollbar {
   width: 0px;
 }
+
+.truncate-4-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  max-height: 4 * 1.2em;
+}
+
+.custom-styles {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.custom-styles h1 {
+  font-size: 2em;
+}
+
+.custom-styles h2 {
+  font-size: 1.5em;
+}
+
+.custom-styles h3 {
+  font-size: 1.17em;
+}
+
+.custom-styles h4 {
+  font-size: 1em;
+}
+
+.custom-styles h5 {
+  font-size: 0.83em;
+}
+
+.custom-styles h6 {
+  font-size: 0.67em;
+}

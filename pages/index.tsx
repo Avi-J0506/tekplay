@@ -9,10 +9,12 @@ import toast from "react-hot-toast";
 export default function App({
   userToken,
   blogPosts,
+  uniqueRandomBlogs,
   error,
 }: {
   userToken: string;
   blogPosts: any;
+  uniqueRandomBlogs: any;
   error: string;
 }) {
   const [blogs, setBlogs] = useState(blogPosts);
@@ -28,7 +30,7 @@ export default function App({
   return (
     <div className="bg-tekPlay-primary w-full min-h-screen h-fit">
       <Navbar userToken={userToken} />
-      <Home blogPosts={blogs} />
+      <Home uniqueRandomBlogs={uniqueRandomBlogs} blogPosts={blogs} />
     </div>
   );
 }
@@ -40,14 +42,21 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   try {
     const blogPosts = await server.get("/api/blogs");
 
+    const shuffledBlogs = blogPosts.data.slice().sort(() => Math.random() - 0.5);
+    const uniqueRandomBlogs = Array.from(
+      new Set(shuffledBlogs.map((blog: { _id: any; }) => blog._id))
+    )
+      .map((id) => shuffledBlogs.find((blog: { _id: unknown; }) => blog._id === id))
+      .slice(0, 4);
+
     return {
       props: {
         userToken: userToken ? userToken : null,
         blogPosts: blogPosts.data,
+        uniqueRandomBlogs: uniqueRandomBlogs
       },
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         userToken: userToken ? userToken : null,
@@ -55,10 +64,4 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       },
     };
   }
-
-  return {
-    props: {
-      userToken: userToken ? userToken : null,
-    },
-  };
 }

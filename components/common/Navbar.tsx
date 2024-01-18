@@ -3,7 +3,7 @@ import React from "react";
 import MenuIcon from "remixicon-react/MenuLineIcon";
 import CloseIcon from "remixicon-react/CloseLineIcon";
 import Link from "next/link";
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 
 const Navbar = ({ userToken }: { userToken: string }) => {
@@ -11,9 +11,9 @@ const Navbar = ({ userToken }: { userToken: string }) => {
   const router = useRouter();
 
   const handleLogOut = () => {
-    destroyCookie(null, 'userToken')
-    router.push('/login')
-  }
+    destroyCookie(null, "userToken");
+    router.push("/login");
+  };
 
   return (
     <div className="bg-tekPlay-primary w-full h-20 border-b border-b-white absolute top-0 left-0 z-[99] flex items-center justify-between px-5 lg:px-12 text-white">
@@ -28,7 +28,7 @@ const Navbar = ({ userToken }: { userToken: string }) => {
       </div>
       <div className="hidden lg:flex items-center gap-10">
         <div>
-          <Link href="/">Home</Link>
+          <Link href="/">Blog</Link>
         </div>
         <div>
           <Link href="/news">News</Link>
@@ -36,13 +36,10 @@ const Navbar = ({ userToken }: { userToken: string }) => {
         <div>
           <Link href="">Video</Link>
         </div>
-        <div>
-          <Link href="">Blog</Link>
-        </div>
         {userToken && (
           <div>
-          <Link href="/createBlog">Create Blog</Link>
-        </div>
+            <Link href="/createBlog">Create Blog</Link>
+          </div>
         )}
         <div>
           {!userToken ? (
@@ -50,7 +47,10 @@ const Navbar = ({ userToken }: { userToken: string }) => {
               <Link href={"/login"}>Login</Link>
             </button>
           ) : (
-            <button className="bg-tekPlay-pink px-4 py-2 text-black" onClick={handleLogOut}>
+            <button
+              className="bg-tekPlay-pink px-4 py-2 text-black"
+              onClick={handleLogOut}
+            >
               <h1>Log Out</h1>
             </button>
           )}
@@ -74,31 +74,54 @@ const Navbar = ({ userToken }: { userToken: string }) => {
             </div>
             <div className="w-fit h-fit flex flex-col gap-2">
               <div>
-                <a className="text-3xl font-semibold" href="">
-                  Games
-                </a>
-              </div>
-              <div>
-                <a className="text-3xl font-semibold" href="">
-                  News
-                </a>
-              </div>
-              <div>
-                <a className="text-3xl font-semibold" href="">
-                  Video
-                </a>
-              </div>
-              <div>
-                <a className="text-3xl font-semibold" href="">
+                <Link
+                  href="/"
+                  onClick={() => setNavbarOpen((prevState) => !prevState)}
+                >
                   Blog
-                </a>
+                </Link>
               </div>
+              <div>
+                <Link
+                  href="/news"
+                  onClick={() => setNavbarOpen((prevState) => !prevState)}
+                >
+                  News
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href=""
+                  onClick={() => setNavbarOpen((prevState) => !prevState)}
+                >
+                  Video
+                </Link>
+              </div>
+              {userToken && (
+                <div>
+                  <Link
+                    href="/createBlog"
+                    onClick={() => setNavbarOpen((prevState) => !prevState)}
+                  >
+                    Create Blog
+                  </Link>
+                </div>
+              )}
             </div>
             <div className="w-full flex flex-col justify-center items-center gap-[35px] mb-[50px]">
               <div>
-                <button className="bg-tekPlay-pink px-4 py-2 text-black text-xl font-semibold">
-                  <Link href={"/login"}>Login</Link>
-                </button>
+                {!userToken ? (
+                  <button className="bg-tekPlay-pink px-4 py-2 text-black">
+                    <Link href={"/login"}>Login</Link>
+                  </button>
+                ) : (
+                  <button
+                    className="bg-tekPlay-pink px-4 py-2 text-black"
+                    onClick={handleLogOut}
+                  >
+                    <h1>Log Out</h1>
+                  </button>
+                )}
               </div>
               <Image
                 className="w-32"

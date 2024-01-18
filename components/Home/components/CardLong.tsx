@@ -37,7 +37,12 @@ const CardLong = ({
         </div>
         <div className="h-full flex flex-col items-start gap-1 mt-3">
           <h1 className="text-2xl">{title}</h1>
-          <h1 className="text-white/80 truncate-4-lines">{desc}</h1>
+          <div
+            className="text-white/80 truncate-4-lines"
+            dangerouslySetInnerHTML={{
+              __html: desc,
+            }}
+          />
         </div>
         <div>
           <button

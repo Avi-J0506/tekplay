@@ -1,4 +1,3 @@
-// createBlog.tsx
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/common/Navbar";
 import dynamic from "next/dynamic";
@@ -63,14 +62,12 @@ const Index = ({ userToken }: { userToken: string }) => {
   };
 
   useEffect(() => {
-    // This block will only run on the first render
     if (!isMounted.current) {
       isMounted.current = true;
 
-      // Access quillRef.current to get the Quill instance
       console.log(quillRef.current);
     }
-  }, [content]); // Include any dependencies if needed
+  }, [content]);
 
   return (
     <div className="bg-tekPlay-primary w-full min-h-screen h-fit flex flex-col pb-20">

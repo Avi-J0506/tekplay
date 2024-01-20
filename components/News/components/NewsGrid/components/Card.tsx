@@ -1,12 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { formatDate } from "@/utils/helpers/parseAndFormatDate";
 
-const Card = () => {
+const Card = ({ article }: { article: any }) => {
   return (
     <div className="w-72 h-[26rem] flex flex-col text-black">
       <div className="w-full h-3/4">
         <Image
-          src="/assets/placeholder.svg"
+          src={article.urlToImage ? article.urlToImage : "/assets/placeholder2.svg"}
           alt=""
           width={300}
           height={200}
@@ -16,11 +17,11 @@ const Card = () => {
       </div>
       <div className="w-full h-1/4 bg-white p-4">
         <div>
-          <h1 className="font-semibold">Lorem Ipsum Dios Lot</h1>
+          <h1 className="font-semibold truncate">{article.title}</h1>
         </div>
         <div className="flex items-center gap-3">
           <h1 className="text-sm text-gray-400">Posted On :</h1>
-          <h1 className="text-sm font-semibold">20-12-2023</h1>
+          <h1 className="text-sm font-semibold">{formatDate(article.publishedAt)}</h1>
         </div>
         <hr />
         <div className="w-full h-full flex justify-between pt-2">
@@ -36,13 +37,13 @@ const Card = () => {
               />
             </div>
             <div>
-              <h1 className="text-sm text-gray-400">@john_doe_69</h1>
+              <h1 className="text-sm text-gray-400">{article.author}</h1>
             </div>
           </div>
           <div>
-            <button className="bg-tekPlay-purple px-1 text-black border-2 border-black text-xs">
+            <a href={article.url} target="_blank" className="bg-tekPlay-purple px-1 text-black border-2 border-black text-xs">
               Read More
-            </button>
+            </a>
           </div>
         </div>
       </div>

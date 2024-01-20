@@ -1,9 +1,13 @@
-import React from "react";
-import Chip from "./components/Chip";
-import categories from "@/utils/constants/NewsCategories.json";
+import React, { useEffect } from "react";
 import Card from "./components/Card";
 
-const Index = () => {
+const Index = ({ newsData }: { newsData: any }) => {
+  const [news, setNews] = React.useState<any>([]);
+
+  useEffect(() => {
+    setNews(newsData.newsData.articles);
+  }, [newsData.newsData.articles]);
+
   return (
     <div className="w-full h-full flex flex-col gap-5 items-center text-white">
       <div className="w-full flex justify-center">
@@ -11,18 +15,15 @@ const Index = () => {
           Powering News for Gamers Everywhere!
         </h1>
       </div>
-      <div className="w-full overflow-x-auto hidden lg:flex lg:justify-center gap-5 flex-shrink-0">
-        {categories.categories.map((category, index) => (
-          <Chip key={`chip_${index}`} title={category} />
-        ))}
-      </div>
       <div className="w-full flex justify-center flex-wrap gap-5">
         <div className="w-3/4 flex gap-5 flex-wrap justify-center">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            news.map((article: any, index: number) => {
+              return (
+                <Card key={index} article={article} />
+              )
+            })
+          }
         </div>
       </div>
     </div>

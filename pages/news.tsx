@@ -10,7 +10,6 @@ const Index = ({
   userToken: string;
   newsData: any;
 }) => {
-  console.log({newsData});
   return (
     <div className="w-full min-h-screen h-fit pb-6 bg-tekPlay-primary">
       <Navbar userToken={userToken} />
@@ -32,7 +31,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   return {
     props: {
       userToken: userToken ? userToken : null,
-      newsData,
+      newsData: newsData.newsData.articles.filter((article: { urlToImage: any; }) => article.urlToImage),
     },
   };
 }

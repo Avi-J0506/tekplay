@@ -6,11 +6,11 @@ const MainCard = ({ newsData }: { newsData: any }) => {
 
   useEffect(() => {
     setNews(
-      newsData.newsData.articles[
-        Math.floor(Math.random() * newsData.newsData.articles.length)
+      newsData[
+        Math.floor(Math.random() * newsData.length)
       ]
     );
-  }, [newsData.newsData.articles]);
+  }, [newsData]);
 
   return (
     <div className="w-full h-fit p-4 pr-5 lg:pr-16 relative">

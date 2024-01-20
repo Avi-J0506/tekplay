@@ -5,8 +5,8 @@ const Index = ({ newsData }: { newsData: any }) => {
   const [news, setNews] = React.useState<any>([]);
 
   useEffect(() => {
-    setNews(newsData.newsData.articles);
-  }, [newsData.newsData.articles]);
+    setNews(newsData);
+  }, [newsData]);
 
   return (
     <div className="w-full h-full flex flex-col gap-5 items-center text-white">

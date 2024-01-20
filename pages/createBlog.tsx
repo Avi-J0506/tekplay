@@ -25,8 +25,6 @@ const Index = ({ userToken }: { userToken: string }) => {
       return toast.error("Please provide some content");
     }
 
-    console.log(title, content);
-
     const response = await server.post("/api/blogs/new", {
       title,
       desc: content,
@@ -64,8 +62,6 @@ const Index = ({ userToken }: { userToken: string }) => {
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;
-
-      console.log(quillRef.current);
     }
   }, [content]);
 

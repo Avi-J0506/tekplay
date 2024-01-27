@@ -15,7 +15,7 @@ const CardLong = ({
 }) => {
   const router = useRouter();
   return (
-    <div className="w-full max-w-80 h-full max-h-[32rem] relative text-white hover:scale-105 cursor-pointer duration-300">
+    <div className="w-full h-96 relative text-white cursor-pointer duration-300">
       <div className="w-full h-full">
         <Image
           className="w-full h-full object-cover"

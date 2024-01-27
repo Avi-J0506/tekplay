@@ -20,7 +20,7 @@ const Index = ({ userToken, blog }: { userToken: string; blog: any }) => {
   }, [blogData, blog, router]);
 
   return (
-    <div className="bg-tekPlay-primary w-full min-h-screen h-fit overflow-auto">
+    <div className="bg-tekPlay-primary w-full min-h-screen h-fit overflow-auto lg:pb-10">
       <Navbar userToken={userToken} />
       <ViewBlog
         title={blogData.title}

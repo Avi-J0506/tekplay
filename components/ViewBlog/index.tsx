@@ -15,7 +15,7 @@ const Index = ({
   return (
     <div className="bg-tekPlay-primary w-full min-h-screen h-fit flex flex-col">
       <div className="w-full h-full flex flex-col items-center flex-1 mt-20 lg:mt-36">
-        <div className="w-full lg:w-1/2 flex flex-col gap-5 text-white items-start justify-between h-20 py-4 p-4 lg:p-0 lg:py-4">
+        <div className="w-full h-auto lg:border lg:border-white/50 lg:w-1/2 flex flex-col gap-5 text-white items-start justify-between py-4 p-4 lg:p-8 lg:py-8">
           <div>
             <h1 className="text-5xl font-black text-white">{title}</h1>
           </div>

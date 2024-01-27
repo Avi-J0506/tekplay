@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import CardLong from "./components/CardLong";
 import CardShort from "./components/CardShort";
 import parseAndFormatDate from "@/utils/helpers/parseAndFormatDate";
+import Carousel from "./components/Carousel";
 
 const Index = ({
   uniqueRandomBlogs,
@@ -39,9 +40,9 @@ const Index = ({
         />
       </div>
       <div className="pt-28 px-5 lg:px-12 relative z-50 flex flex-wrap gap-5 p-10">
-        <div className="w-full flex flex-wrap gap-5 justify-start">
+        <Carousel>
           {uniqueRandomBlogsList.map((blog: any) => (
-            <div key={blog._id} className="hidden lg:block">
+            <div key={blog._id} className="w-full">
               <CardLong
                 title={blog.title}
                 author={blog.title}
@@ -50,8 +51,8 @@ const Index = ({
               />
             </div>
           ))}
-        </div>
-        <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5">
+        </Carousel>
+        <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5 md:px-12">
           {blogs.map((blog: any) => (
             <CardShort
               key={blog._id}

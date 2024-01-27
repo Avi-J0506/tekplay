@@ -1,14 +1,19 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import MenuIcon from "remixicon-react/MenuLineIcon";
 import CloseIcon from "remixicon-react/CloseLineIcon";
 import Link from "next/link";
-import { parseCookies, setCookie, destroyCookie } from "nookies";
+import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 
 const Navbar = ({ userToken }: { userToken: string }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [currentRoute, setCurrentRoute] = React.useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    setCurrentRoute(router.pathname);
+  }, [router.pathname]);
 
   const handleLogOut = () => {
     destroyCookie(null, "userToken");
@@ -27,17 +32,25 @@ const Navbar = ({ userToken }: { userToken: string }) => {
         />
       </div>
       <div className="hidden lg:flex items-center gap-10">
-        <div>
+        <div className={
+          currentRoute === "/" ? "border-b-2 border-white" : "border-b-2 border-transparent"
+        }>
           <Link href="/">Blog</Link>
         </div>
-        <div>
+        <div className={
+          currentRoute === "/news" ? "border-b-2 border-white" : "border-b-2 border-transparent"
+        }>
           <Link href="/news">News</Link>
         </div>
-        <div>
+        <div className={
+          currentRoute === "/video" ? "border-b-2 border-white" : "border-b-2 border-transparent"
+        }>
           <Link href="">Video</Link>
         </div>
         {userToken && (
-          <div>
+          <div className={
+            currentRoute === "/createBlog" ? "border-b-2 border-white" : "border-b-2 border-transparent"
+          }>
             <Link href="/createBlog">Create Blog</Link>
           </div>
         )}

@@ -33,7 +33,7 @@ const CardShort = ({
   });
 
   return (
-    <div className="w-full max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300 mb-5" onClick={() => router.push(`/blog/${id}`)}>
+    <div className="w-full md:max-w-64 lg:max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300 mb-5" onClick={() => router.push(`/blog/${id}`)}>
       <div className="h-3/4 w-full object-cover">
         <Image
           className="w-full h-full object-cover"

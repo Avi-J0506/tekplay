@@ -8,8 +8,8 @@ export default async function paginatedBlogs (req,res){
     const pageno = parseInt(req.query.page) || 1;
     try{
         const blogs = await Blog.find()
-        .skip((pageno-1)*pageLength)
-        .limit(pageLength)
+        // .skip((pageno-1)*pageLength)
+        // .limit(pageLength)
         
         res.status(200).json(blogs)
     }

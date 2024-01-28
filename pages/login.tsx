@@ -93,14 +93,6 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="flex items-center justify-between">
-                  <Link
-                    href={"/forgot"}
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-gray-500"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
                 <button
                   type="submit"
                   className="w-full bg-tekPlay-orange px-4 py-2 text-black"

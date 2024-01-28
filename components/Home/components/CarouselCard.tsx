@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/router";
 
-const CardLong = ({
+const CarouselCard = ({
   title,
   author,
   desc,
@@ -36,7 +36,7 @@ const CardLong = ({
           />
         </div>
         <div className="h-full flex flex-col items-start gap-1 mt-3">
-          <h1 className="text-2xl">{title}</h1>
+          <h1 className="text-2xl font-bold font-PlayfairDisplay">{title}</h1>
           <div
             className="text-white/80 truncate-4-lines"
             dangerouslySetInnerHTML={{
@@ -57,4 +57,4 @@ const CardLong = ({
   );
 };
 
-export default CardLong;
+export default CarouselCard;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
-import CardLong from "./components/CardLong";
-import CardShort from "./components/CardShort";
+import CarouselCard from "./components/CarouselCard";
+import Card from "./components/Card";
 import parseAndFormatDate from "@/utils/helpers/parseAndFormatDate";
 import Carousel from "./components/Carousel";
 
@@ -43,7 +43,7 @@ const Index = ({
         <Carousel>
           {uniqueRandomBlogsList.map((blog: any) => (
             <div key={blog._id} className="w-full">
-              <CardLong
+              <CarouselCard
                 title={blog.title}
                 author={blog.title}
                 desc={blog.desc}
@@ -54,7 +54,7 @@ const Index = ({
         </Carousel>
         <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5 md:px-12">
           {blogs.map((blog: any) => (
-            <CardShort
+            <Card
               key={blog._id}
               title={blog.title}
               author={blog.authorName}

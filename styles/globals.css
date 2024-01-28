@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply font-CourierPrime;
+  @apply font-DMSans;
 }
 
 ::-webkit-scrollbar {

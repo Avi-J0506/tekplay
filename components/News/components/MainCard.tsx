@@ -16,9 +16,9 @@ const MainCard = ({ newsData }: { newsData: any }) => {
     <div className="w-full h-fit p-4 pr-5 lg:pr-16 relative">
       <div className="bg-white border-2 relative z-10 border-black rounded-3xl w-full h-full flex flex-col-reverse lg:flex-row p-2">
         <div className="w-full lg:w-3/5 flex flex-col gap-5 items-start justify-between p-6">
-          <div>
+          <div className="flex flex-col gap-2">
             <div>
-              <h1 className="text-3xl md:text-5xl">{news.title}</h1>
+              <h1 className="text-3xl font-semibold md:text-5xl">{news.title}</h1>
             </div>
             <div>
               <h1 className="text-xs md:text-base truncate-4-lines">

@@ -31,7 +31,7 @@ const Navbar = ({ userToken }: { userToken: string }) => {
           height={200}
         />
       </div>
-      <div className="hidden lg:flex items-center gap-10">
+      <div className="hidden lg:flex items-center gap-10 font-bold">
         <div className={
           currentRoute === "/" ? "border-b-2 border-white" : "border-b-2 border-transparent"
         }>

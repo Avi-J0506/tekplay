@@ -11,7 +11,7 @@ const Index = ({ newsData }: { newsData: any }) => {
   return (
     <div className="w-full h-full flex flex-col gap-5 items-center text-white">
       <div className="w-full flex justify-center">
-        <h1 className="text-xl md:text-4xl text-center">
+        <h1 className="text-xl md:text-4xl text-center font-PlayfairDisplay">
           Powering News for Gamers Everywhere!
         </h1>
       </div>

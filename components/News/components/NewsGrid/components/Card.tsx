@@ -17,11 +17,11 @@ const Card = ({ article }: { article: any }) => {
       </div>
       <div className="w-full h-1/4 bg-white p-4">
         <div>
-          <h1 className="font-semibold truncate">{article.title}</h1>
+          <h1 className="font-bold truncate">{article.title}</h1>
         </div>
         <div className="flex items-center gap-3">
           <h1 className="text-sm text-gray-400">Posted On :</h1>
-          <h1 className="text-sm font-semibold">{formatDate(article.publishedAt)}</h1>
+          <h1 className="text-sm text-gray-400">{formatDate(article.publishedAt)}</h1>
         </div>
         <hr />
         <div className="w-full h-full flex justify-between pt-2">

@@ -20,7 +20,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        CourierPrime: ["Courier Prime", "monospace"],
+        DMSans : ['DM Sans', 'sans-serif'],
+        PlayfairDisplay : ['Playfair Display', 'sans-serif'],
       }
     },
   },

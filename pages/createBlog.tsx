@@ -72,7 +72,7 @@ const Index = ({ userToken }: { userToken: string }) => {
         <div className="w-full md:w-3/4 flex flex-col-reverse md:flex md:flex-row gap-2 md:mt-0 mt-10 justify-between h-20 py-4 p-2 md:p-0 md:py-4">
           <div>
             <input
-              className="text-white outline-none text-4xl bg-transparent w-full"
+              className="text-white outline-none text-4xl bg-transparent w-full font-PlayfairDisplay font-bold"
               placeholder="Title"
               onChange={(e) => {
                 setTitle(e.target.value);

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const CardShort = ({
+const Card = ({
   title,
   author,
   date,
@@ -48,7 +48,7 @@ const CardShort = ({
         style={{ backgroundColor: color }}
       >
         <div className="w-full flex justify-start">
-          <h1 className="font-semibold">{title}</h1>
+          <h1 className="font-bold font-PlayfairDisplay">{title}</h1>
         </div>
         <div className="w-full flex justify-between text-sm">
           <div>
@@ -63,4 +63,4 @@ const CardShort = ({
   );
 };
 
-export default CardShort;
+export default Card;

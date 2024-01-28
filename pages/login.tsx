@@ -40,7 +40,7 @@ const Login = () => {
         <div className="absolute w-full flex justify-between items-start h-screen overflow-clip z-0">
           <Image
             className="w-full h-[101vh] md:w-1/2 md:h-auto"
-            src="/assets/Globe.svg"
+            src="/assets/Globe2.svg"
             alt={""}
             width={200}
             height={200}

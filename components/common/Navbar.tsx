@@ -35,7 +35,12 @@ const Navbar = ({ userToken }: { userToken: string }) => {
         <div className={
           currentRoute === "/" ? "border-b-2 border-white" : "border-b-2 border-transparent"
         }>
-          <Link href="/">Blog</Link>
+          <Link href="/">Home</Link>
+        </div>
+        <div className={
+          currentRoute === "/blog" ? "border-b-2 border-white" : "border-b-2 border-transparent"
+        }>
+          <Link href="/blog">Blog</Link>
         </div>
         <div className={
           currentRoute === "/news" ? "border-b-2 border-white" : "border-b-2 border-transparent"
@@ -88,7 +93,7 @@ const Navbar = ({ userToken }: { userToken: string }) => {
             <div className="w-fit h-fit flex flex-col gap-2">
               <div>
                 <Link
-                  href="/"
+                  href="/blog"
                   onClick={() => setNavbarOpen((prevState) => !prevState)}
                 >
                   Blog

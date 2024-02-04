@@ -1,67 +1,106 @@
+// pages/index.js
+import React from "react";
+import Eyes from "./_components/Eyes";
 import Image from "next/image";
-import React, { useEffect } from "react";
-import CarouselCard from "./components/CarouselCard";
-import Card from "./components/Card";
-import parseAndFormatDate from "@/utils/helpers/parseAndFormatDate";
-import Carousel from "./components/Carousel";
+import Link from "next/link";
 
-const Index = ({
-  uniqueRandomBlogs,
-  blogPosts,
-}: {
-  uniqueRandomBlogs: any;
-  blogPosts: any;
-}) => {
-  const [blogs, setBlogs] = React.useState(blogPosts);
-  const [uniqueRandomBlogsList, setUniqueRandomBlogsList] =
-    React.useState(uniqueRandomBlogs);
-
-  useEffect(() => {
-    setBlogs(blogPosts);
-    setUniqueRandomBlogsList(uniqueRandomBlogs);
-  }, [blogPosts, uniqueRandomBlogs]);
-
+const Index = () => {
   return (
-    <div className="w-full min-h-screen h-fit overflow-clip bg-tekPlay-primary relative">
-      <div className="absolute top-10 w-full flex justify-between items-start h-fit overflow-clip z-0">
-        <Image
-          className="w-full h-[101vh] md:w-1/2 md:h-auto"
-          src="/assets/Globe.svg"
-          alt={""}
-          width={200}
-          height={200}
-        />
-        <Image
-          className="w-32 hidden lg:block mt-20"
-          src="/assets/Graphic1.svg"
-          alt={""}
-          width={200}
-          height={200}
-        />
+    <div className="w-full min-h-screen h-fit bg-tekPlay-primary relative flex justify-center items-end">
+      {/* FACE */}
+      <div className="relative">
+        <Image src="/assets/Boy.png" alt="" width={500} height={500} />
+        <div className="hidden lg:block absolute top-[9.8rem] left-[11.5rem]">
+          <Eyes />
+        </div>
       </div>
-      <div className="pt-28 px-5 lg:px-12 relative z-50 flex flex-wrap gap-5 p-10">
-        <Carousel>
-          {uniqueRandomBlogsList.map((blog: any) => (
-            <div key={blog._id} className="w-full">
-              <CarouselCard
-                title={blog.title}
-                author={blog.title}
-                desc={blog.desc}
-                id={blog._id}
-              />
-            </div>
-          ))}
-        </Carousel>
-        <div className="w-full flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-5 md:px-12">
-          {blogs.map((blog: any) => (
-            <Card
-              key={blog._id}
-              title={blog.title}
-              author={blog.authorName}
-              date={parseAndFormatDate(blog.createdAt)}
-              id={blog._id}
-            />
-          ))}
+
+      {/* QUESTIONS */}
+      <div className="hidden absolute top-0 left-0 right-0 bottom-0 lg:flex flex-col items-center justify-center text-white text-lg">
+        <div className="absolute bottom-[5rem] left-[5rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[15rem] left-[9rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[23rem] left-[15rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[30rem] left-[25rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+
+        <div className="absolute bottom-[35rem] left-[42rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+
+        <div className="absolute bottom-[5rem] right-[5rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[15rem] right-[9rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[23rem] right-[15rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute bottom-[30rem] right-[25rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+      </div>
+
+      <div className="lg:hidden absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-white text-lg">
+        <div className="absolute top-[7rem] left-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[10rem] right-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[13rem] left-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[16rem] right-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[19rem] left-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[22rem] right-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
+        </div>
+        <div className="absolute top-[25rem] left-[2rem] text-center">
+          <Link className="font-bold text-2xl" href="/question1">
+            Lorem Ipsum ?
+          </Link>
         </div>
       </div>
     </div>

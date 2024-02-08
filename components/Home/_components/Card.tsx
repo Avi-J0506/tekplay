@@ -4,14 +4,12 @@ import React, { useEffect } from "react";
 
 const Card = ({
   title,
-  author,
-  date,
-  id
+  desc,
+  url,
 }: {
   title: string;
-  author: string;
-  date: string;
-  id: string
+  desc: string;
+  url: string;
 }) => {
   const [color, setColor] = React.useState("");
   const randomColorPicker = () => {
@@ -33,7 +31,10 @@ const Card = ({
   });
 
   return (
-    <div className="w-full md:max-w-64 lg:max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300 mb-5" onClick={() => router.push(`/blog/${id}`)}>
+    <div
+      className="w-full md:max-w-64 lg:max-w-80 h-56 flex flex-col hover:scale-105 cursor-pointer duration-300 mb-5"
+      onClick={() => router.push(url)}
+    >
       <div className="h-3/4 w-full object-cover">
         <Image
           className="w-full h-full object-cover"
@@ -44,20 +45,15 @@ const Card = ({
         />
       </div>
       <div
-        className="w-full h-full flex flex-col items-center p-4"
+        className="w-full h-full flex flex-col items-center p-2"
         style={{ backgroundColor: color }}
       >
-        <div className="w-full flex justify-start">
+        <div className="w-full flex justify-center">
           <h1 className="font-bold font-PlayfairDisplay">{title}</h1>
         </div>
-        <div className="w-full flex justify-between text-sm">
           <div>
-            <h1>By {author}</h1>
+            <h1>{desc}</h1>
           </div>
-          <div>
-            <h1>{date}</h1>
-          </div>
-        </div>
       </div>
     </div>
   );

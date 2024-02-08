@@ -1,13 +1,21 @@
-// pages/index.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Eyes from "./_components/Eyes";
 import Image from "next/image";
 import Link from "next/link";
 import Carousel from "./_components/Carousel";
 import CarouselCard from "./_components/CarouselCard";
 import Card from "./_components/Card";
+import { GetServerSidePropsContext } from "next";
+import nookies from "nookies";
 
-const Index = () => {
+const Index = ({ newsData }: { newsData: any }) => {
+  const [news, setNews] = useState<any[]>(newsData);
+
+  useEffect(() => {
+    console;
+    setNews(newsData);
+  }, [newsData]);
+
   return (
     <div className="w-full min-h-screen h-git bg-tekPlay-primary flex flex-col overflow-x-hidden">
       <div className="w-full min-h-screen h-fit bg-tekPlay-primary relative flex justify-center items-end">
@@ -22,50 +30,50 @@ const Index = () => {
         {/* QUESTIONS */}
         <div className="hidden absolute top-0 left-0 right-0 bottom-0 lg:flex flex-col items-center justify-center text-white text-lg">
           <div className="absolute bottom-[5rem] left-[5rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+            <Link className="font-bold text-base" href="/question1">
+              Where can I sell my games?
             </Link>
           </div>
-          <div className="absolute bottom-[15rem] left-[9rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[15rem] left-[8rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              ⁠What Software do I need to make games?
             </Link>
           </div>
           <div className="absolute bottom-[23rem] left-[15rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+            <Link className="font-bold text-base" href="/question1">
+              ⁠Where do I learn to make games in India?
             </Link>
           </div>
           <div className="absolute bottom-[30rem] left-[25rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+            <Link className="font-bold text-base" href="/question1">
+              ⁠Whats the history of games?
             </Link>
           </div>
 
-          <div className="absolute bottom-[35rem] left-[42rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[35rem] left-[35rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              ⁠Can games be used for something other than entertainment?
             </Link>
           </div>
 
-          <div className="absolute bottom-[5rem] right-[5rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[5rem] right-[4rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              ⁠Can I learn school subjects using games?
             </Link>
           </div>
-          <div className="absolute bottom-[15rem] right-[9rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[15rem] right-[4rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              ⁠What are my career options in gaming technology?
             </Link>
           </div>
-          <div className="absolute bottom-[23rem] right-[15rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[23rem] right-[10rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              What are the reviews of the latest popular games?
             </Link>
           </div>
-          <div className="absolute bottom-[30rem] right-[25rem] text-center">
-            <Link className="font-bold text-2xl" href="/question1">
-              Lorem Ipsum ?
+          <div className="absolute bottom-[30rem] right-[15rem] text-center">
+            <Link className="font-bold text-base" href="/question1">
+              Is there an online course for game development?
             </Link>
           </div>
         </div>
@@ -110,30 +118,33 @@ const Index = () => {
       </div>
       <div className="w-full h-fit p-6 flex flex-col gap-6">
         <Carousel interval={3000}>
-          <CarouselCard
-            title={"Test1"}
-            author={"Test1"}
-            desc={"Lorem Ipsum"}
-            id={"1"}
-          />
-          <CarouselCard
-            title={"Test2"}
-            author={"Test2"}
-            desc={"Lorem Ipsum"}
-            id={"2"}
-          />
-          <CarouselCard
-            title={"Test3"}
-            author={"Test3"}
-            desc={"Lorem Ipsum"}
-            id={"3"}
-          />
+          {news.map((article: any) => (
+            <CarouselCard
+              key={article.id} // Make sure to include a unique key for each mapped element
+              title={article.title}
+              urlToImage={article.urlToImage}
+              desc={article.description}
+              id={article.id}
+            />
+          ))}
         </Carousel>
         <div className="w-full flex flex-wrap justify-evenly">
-          <Card title={"Test"} author={"Test"} date={"1/10/2023"} id={"1"} />
-          <Card title={"Test"} author={"Test"} date={"1/10/2023"} id={"2"} />
-          <Card title={"Test"} author={"Test"} date={"1/10/2023"} id={"3"} />
-          <Card title={"Test"} author={"Test"} date={"1/10/2023"} id={"4"} />
+          <Card
+            title={"News"}
+            desc={"The latest news on games"}
+            url={"/news"}
+          />
+          <Card title={"Blogs"} desc={"Check out our blogs"} url={"/blog"} />
+          <Card
+            title={"Events"}
+            desc={"Look out for upcoming events"}
+            url={"/"}
+          />
+          <Card
+            title={"Reviews"}
+            url={"/components"}
+            desc={"Our professional game reviews"}
+          />
         </div>
       </div>
     </div>

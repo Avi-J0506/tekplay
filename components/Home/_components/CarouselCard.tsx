@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 
 const CarouselCard = ({
   title,
-  author,
+  urlToImage,
   desc,
   id,
 }: {
   title: string;
-  author: string;
+  urlToImage: any;
   desc: string;
   id: string;
 }) => {
@@ -19,7 +19,7 @@ const CarouselCard = ({
       <div className="w-full h-full">
         <Image
           className="w-full h-full object-cover"
-          src="/assets/placeholder2.svg"
+          src={urlToImage ? urlToImage : "/assets/placeholder2.svg"}
           alt={""}
           width={200}
           height={200}
